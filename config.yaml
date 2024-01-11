@@ -1,0 +1,11 @@
+path: C:\Dev\Git\uProc-ObjectDet\data
+train: train\images
+val: validation\images
+
+# Classes
+names:
+  0: Earrings
+  1: Pen
+  2: Calculator
+  3: Ball
+  4: Scissors
