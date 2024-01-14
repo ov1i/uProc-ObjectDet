@@ -5,7 +5,7 @@ import os
 import fnmatch
 from ultralytics import YOLO
 def createMenus():
-    training_results_menu = [[], ['F1', 'Labels', 'Confusion Matrix', 'P Curve', 'PR Curve', 'R Curve']]
+    training_results_menu = [[], ['F1', 'Labels', 'Results', 'Confusion Matrix', 'P Curve', 'PR Curve', 'R Curve']]
     theme_layout = [[sg.Text("See how elements look under different themes by choosing a different theme here!")],
                     [sg.Listbox(values=sg.theme_list(),
                                 size=(20, 12),
@@ -90,6 +90,12 @@ def createMenus():
             tempFrame = cv2.resize(tempFrame, (1280, 960))
             tempFrameBytes = cv2.imencode('.png', tempFrame)[1].tobytes()
             sg.popup("R Curve", image=tempFrameBytes, keep_on_top=True)
+        elif event == '-tres-' and values['-tres-'] == 'Results':
+            tempPath = os.path.join('.', 'runs', 'detect', 'train8', 'Results.png')
+            tempFrame = cv2.imread(tempPath)
+            tempFrame = cv2.resize(tempFrame, (1280, 960))
+            tempFrameBytes = cv2.imencode('.png', tempFrame)[1].tobytes()
+            sg.popup("Results", image=tempFrameBytes, keep_on_top=True)
         framebytes = cv2.imencode('.png', frame)[1].tobytes()
         window['-IMAGE-'].update(data=framebytes)
     window.close()
