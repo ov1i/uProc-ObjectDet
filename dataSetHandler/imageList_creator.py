@@ -1,6 +1,6 @@
 import os
 
-tempIDs = ['/m/01r546', '/m/0k1tl', '/m/024d2', '/m/018xm', '/m/01lsmm'] # -> earrings, pen, calculator, ball, scissors
+tempIDs = ['/m/01r546', '/m/0k1tl', '/m/024d2', '/m/018xm', '/m/01lsmm']
 
 train_bboxes_filename = os.path.join('..', 'OData\\oidv6-train-annotations-bbox.csv')
 validation_bboxes_filename = os.path.join('..', 'OData\\validation-annotations-bbox.csv')
@@ -17,7 +17,7 @@ def create_image_file(tempIDs):
             while len(line) != 0:
                 id, _, class_name, _, x1, x2, y1, y2, _, _, _, _, _ = line.split(',')[:13]
                 for tempID in tempIDs:
-                    if (class_name in [tempID]) and (id not in [image_list_file_list]):
+                    if (class_name in [tempID]) and (id not in image_list_file_list):
                         image_list_file_list.append(id)
                         with open(image_list_file_path, 'a') as fw:
                             fw.write('{}/{}\n'.format(['train', 'validation', 'test'][j], id))

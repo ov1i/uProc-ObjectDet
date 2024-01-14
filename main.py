@@ -1,6 +1,5 @@
-from ultralytics import YOLO
+from GUI import main_win as myWIN
 
-model = YOLO("yolov8n.yaml")  # build a new model from scratch
 
-# Use the model
-results = model.train(data="config.yaml", epochs=3)  # train the model
+if __name__ == '__main__':
+    myWIN.createMenus()

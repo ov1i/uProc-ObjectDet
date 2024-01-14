@@ -1,36 +1,3 @@
-# python3
-# coding=utf-8
-# Copyright 2020 The Google Research Authors.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-"""Open Images image downloader.
-
-This script downloads a subset of Open Images images, given a list of image ids.
-Typical uses of this tool might be downloading images:
-- That contain a certain category.
-- That have been annotated with certain types of annotations (e.g. Localized
-Narratives, Exhaustively annotated people, etc.)
-
-The input file IMAGE_LIST should be a text file containing one image per line
-with the format <SPLIT>/<IMAGE_ID>, where <SPLIT> is either "train", "test",
-"validation", or "challenge2018"; and <IMAGE_ID> is the image ID that uniquely
-identifies the image in Open Images. A sample file could be:
-  train/f9e0434389a1d4dd
-  train/1a007563ebc18664
-  test/ea8bfd4e765304db
-
-"""
-
 import argparse
 from concurrent import futures
 import os
@@ -84,12 +51,14 @@ def download_all_images(args):
   download_folder = args['download_folder'] or os.getcwd()
 
   if not os.path.exists(download_folder):
+    download_folder = os.path.join('..',  download_folder)
     os.makedirs(download_folder)
 
   try:
+    temp_list = os.path.join('..', args['image_list'])
     image_list = list(
         check_and_homogenize_image_list(
-            read_image_list_file(args['image_list'])))
+            read_image_list_file(temp_list)))
   except ValueError as exception:
     sys.exit(exception)
 
