@@ -41,12 +41,18 @@ def createMenus():
             frame = cv2.cvtColor(jpgFrame, cv2.COLOR_BGR2BGRA)
             frame = cv2.resize(frame, (680, 480))
         elif values['-cam-'] == True:
-            succes, camFrame = camera.read()
-            if succes:
-                results = model(camFrame)
-                jpgFrame = results[0].plot()
+            if camera is None or not camera.isOpened():
+                values['-cam-'] = False
+                values['-img-'] = True
+                window['-cam-'].update(value=False)
+                window['-img-'].update(value=True)
+            else:
+                succes, camFrame = camera.read()
+                if succes:
+                    results = model(camFrame)
+                    jpgFrame = results[0].plot()
 
-            frame = cv2.cvtColor(jpgFrame, cv2.COLOR_BGR2BGRA)
+                frame = cv2.cvtColor(jpgFrame, cv2.COLOR_BGR2BGRA)
         elif event == '-tres-' and values['-tres-'] == 'F1':
             tempPath = os.path.join('.', 'runs', 'detect', 'train8', 'F1_curve.png')
             tempFrame = cv2.imread(tempPath)
