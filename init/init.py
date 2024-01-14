@@ -1,3 +1,4 @@
+import os.path
 import sys
 import subprocess
 
@@ -37,6 +38,7 @@ if __name__ == '__main__':
     finally:
         import pandas
 
-
+    img_dir_path = os.path.join("..","testPictures")
+    os.mkdir(img_dir_path + "test")
 
     print("\nSUCCESSFULLY EXECUTED INIT.py")
