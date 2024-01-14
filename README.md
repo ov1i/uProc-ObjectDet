@@ -4,7 +4,7 @@
   * Open CMD in the dataSetHandler directory
   * Run the following command: python.exe dataSetImage_downloader.py --download_folder testPictures listOfImages
   * Wait for pictures to be downloaded
-  * Now go in the parent directory and run the following command: python.exe main.py
+  * Now in the parent directory run the following command: python.exe main.py OR press on the Application.bat
 - How to use the scripts (for the data set downloader):
   * First you have to run dataSetHandler/imageList_creator.py (modify tempIDs depending on what pictures section you want on Open Image DataSet v7)
   * Then run dataSetHandler/dataSetImage_downloader.py (args: --download_folder destination listOfImages)
