@@ -38,6 +38,15 @@ if __name__ == '__main__':
     finally:
         import pandas
 
+    try: #boto3
+        print("Searching for boto3\n")
+        import boto3
+        print("\nPackage already installed\n")
+    except ImportError:
+        install('boto3')
+    finally:
+        import boto3
+
     img_dir_path = os.path.join("..","testPictures")
     os.mkdir(img_dir_path + "test")
 
