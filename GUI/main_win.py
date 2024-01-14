@@ -22,7 +22,7 @@ def createMenus():
     window = sg.Window("Object Detection by Gherman Ovidiu", layout , location=(600,200))
 
     frame = np.zeros(shape=[480, 680, 3])
-    model_path = os.path.join('..','runs', 'detect', 'train8', 'weights', 'best.pt')
+    model_path = os.path.join('runs', 'detect', 'train8', 'weights', 'best.pt')
     model = YOLO(model_path)
     camera = cv2.VideoCapture(0)
 
@@ -33,7 +33,7 @@ def createMenus():
             break
         if event == '-imageLoader-' and  values['-img-'] == True:
             framePath = os.path.join(".", "testPictures",values['-imageLoader-'][0])
-            jpgFrame = cv2.imread(framePath)
+            jpgFrame = cv2.imread(framePath)       
 
             results = model(jpgFrame)
             jpgFrame = results[0].plot()
