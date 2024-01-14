@@ -48,6 +48,6 @@ if __name__ == '__main__':
         import boto3
 
     img_dir_path = os.path.join("..","testPictures")
-    os.mkdir(img_dir_path + "test")
+    os.mkdir(img_dir_path)
 
     print("\nSUCCESSFULLY EXECUTED INIT.py")
